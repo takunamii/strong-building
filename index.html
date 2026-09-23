@@ -11,10 +11,10 @@
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- шапка -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#" aria-label="СТРОНГ Билдингс — на главную">
+      <a class="brand" href="#">
         <img src="images/logo-strong.png" alt="СТРОНГ Билдингс" width="188" height="47">
         <div class="brand-tagline">
           <span>от завода производителя</span>
@@ -30,15 +30,15 @@
       </div>
       <a class="header-mobile-num" href="tel:+78005557304">8 800 555 73 04</a>
       <button class="btn-ghost header-callback" data-modal="callback">Заказать расчёт</button>
-      <button class="burger" data-drawer aria-label="Открыть меню" aria-expanded="false">
+      <button class="burger" aria-label="Открыть меню" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- mobile drawer -->
-  <div class="drawer-backdrop" data-drawer-close></div>
-  <aside class="drawer" data-drawer aria-label="Меню">
+  <!-- мобильное меню -->
+  <div class="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer">
     <div class="drawer-head">
       <img src="images/logo-strong.png" alt="СТРОНГ Билдингс" width="188" height="47">
       <button class="drawer-close" data-drawer-close aria-label="Закрыть меню">
@@ -60,7 +60,7 @@
   </aside>
 
   <main>
-    <!-- ================= HERO ================= -->
+    <!-- первый экран -->
     <section class="hero" id="hero">
       <div class="hero-bg"><img src="images/hero-bg.jpg" alt="" width="1600" height="900"></div>
       <div class="container hero-inner">
@@ -100,7 +100,7 @@
       </div>
     </section>
 
-    <!-- ================= PORTFOLIO ================= -->
+    <!-- проекты -->
     <section class="portfolio" id="portfolio">
       <div class="container">
         <h2 class="reveal-fade" data-reveal>Примеры реализованных проектов:</h2>
@@ -162,7 +162,7 @@
       </div>
     </section>
 
-    <!-- ================= CONTACTS ================= -->
+    <!-- контакты -->
     <section class="contacts" id="contacts">
       <div class="container contacts-grid">
         <div class="reveal" data-reveal>
@@ -190,6 +190,7 @@
           </div>
         </div>
 
+        <!-- форма заявки -->
         <div class="form-card reveal" data-reveal data-reveal-delay="120">
           <h3>Оставить заявку</h3>
           <form data-form novalidate>
@@ -210,11 +211,11 @@
             </div>
             <label class="consent" data-consent="required">
               <span class="consent-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="consent-text">Я согласен на <a href="#" onclick="return false">обработку персональных данных</a></span>
+              <span class="consent-text">Я согласен на <a href="#">обработку персональных данных</a></span>
             </label>
             <label class="consent" data-consent="optional">
               <span class="consent-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="consent-text">Согласен на <a href="#" onclick="return false">получение информационных и рекламных сообщений</a> (необязательно)</span>
+              <span class="consent-text">Согласен на <a href="#">получение информационных и рекламных сообщений</a> (необязательно)</span>
             </label>
             <div class="form-error" data-form-error>Необходимо согласие на обработку персональных данных</div>
             <button type="submit" class="btn-accent" style="width:100%;min-height:52px">ОТПРАВИТЬ ЗАЯВКУ →</button>
@@ -229,7 +230,7 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- подвал -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -260,18 +261,18 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© <span data-year>2026</span> «СТРОНГ Билдингс». Все права защищены.</p>
-        <a class="footer-policy" href="#" onclick="return false">Политика конфиденциальности</a>
+        <a class="footer-policy" href="#">Политика конфиденциальности</a>
       </div>
     </div>
   </footer>
 
-  <!-- ================= CALLBACK MODAL ================= -->
-  <div class="modal-backdrop" id="modal-callback" role="dialog" aria-modal="true" aria-labelledby="callback-title">
+  <!-- модалка обратного звонка -->
+  <div class="modal-backdrop" id="modal-callback">
     <div class="modal modal-sm">
       <button class="modal-close" data-modal-close aria-label="Закрыть">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
-      <h3 id="callback-title">Заказ обратного звонка</h3>
+      <h3>Заказ обратного звонка</h3>
       <p class="modal-sub">Перезвоним в течение 30 минут в рабочее время</p>
       <form data-form-modal novalidate>
         <div class="field" data-name="name">
@@ -284,7 +285,7 @@
         </div>
         <label class="consent" data-consent="required">
           <span class="consent-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <span class="consent-text">Я согласен на <a href="#" onclick="return false">обработку персональных данных</a></span>
+          <span class="consent-text">Я согласен на <a href="#">обработку персональных данных</a></span>
         </label>
         <button type="submit" class="btn-accent" style="margin-top:10px">ЗАКАЗАТЬ ЗВОНОК →</button>
       </form>
@@ -296,13 +297,13 @@
     </div>
   </div>
 
-  <!-- ================= QUOTE QUIZ MODAL ================= -->
-  <div class="modal-backdrop" id="modal-quote" role="dialog" aria-modal="true" aria-labelledby="quote-title">
+  <!-- квиз заказать расчёт -->
+  <div class="modal-backdrop" id="modal-quote">
     <div class="modal modal-quiz">
       <button class="modal-close" data-modal-close aria-label="Закрыть">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
-      <h3 id="quote-title">Расчёт стоимости здания</h3>
+      <h3>Расчёт стоимости здания</h3>
       <div class="quiz-progress">
         <div class="quiz-bar"><span id="quiz-bar-fill" style="width:25%"></span></div>
         <div class="quiz-step-label" id="quiz-step-label">Шаг 1 из 4</div>
@@ -390,7 +391,7 @@
           </div>
           <label class="consent" data-consent="required">
             <span class="consent-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <span class="consent-text">Я согласен на <a href="#" onclick="return false">обработку персональных данных</a></span>
+            <span class="consent-text">Я согласен на <a href="#">обработку персональных данных</a></span>
           </label>
           <div class="quiz-nav">
             <button type="button" class="btn-ghost" data-quiz-back="3">← Назад</button>
@@ -408,8 +409,8 @@
     </div>
   </div>
 
-  <!-- ================= LIGHTBOX ================= -->
-  <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр проекта">
+  <!-- просмотр фото проекта -->
+  <div class="lb" id="lightbox">
     <div class="lb-dialog">
       <button class="lb-close" data-lb-close aria-label="Закрыть">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>

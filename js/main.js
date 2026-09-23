@@ -58,17 +58,7 @@ function setWord(word) {
   span.textContent = word;
   flip.appendChild(span);
 
-  // если слово длинное, уменьшаем шрифт чтобы влезло в строку
-  flip.style.fontSize = '';
-  let w = span.offsetWidth;
-  const line = flip.closest('.line');
-  const plain = line.querySelector('.hl-plain');
-  const free = line.clientWidth - plain.offsetWidth - 20;
-  if (w > free) {
-    flip.style.fontSize = Math.floor(free / w * 100) + '%';
-    w = span.offsetWidth;
-  }
-  flip.style.width = w + 'px';
+  fitFlip();
 
   setTimeout(function () {
     span.classList.add('in');
@@ -80,12 +70,36 @@ function setWord(word) {
   }, 20);
 }
 
+// подгоняем ширину плашки под текущее слово
+function fitFlip() {
+  // берём последний спан — это новое слово (старое ещё улетает наверх)
+  const all = flip.querySelectorAll('.w');
+  const span = all[all.length - 1];
+  if (!span) return;
+
+  flip.style.fontSize = '';
+  let w = span.offsetWidth;
+  const line = flip.closest('.line');
+  const plain = line.querySelector('.hl-plain');
+  const free = line.clientWidth - plain.offsetWidth - 20;
+  // если слово длинное, уменьшаем шрифт чтобы влезло в строку
+  if (w > free) {
+    flip.style.fontSize = Math.floor(free / w * 100) + '%';
+    w = span.offsetWidth;
+  }
+  flip.style.width = w + 'px';
+}
+
 setWord(words[wordIndex]);
 setInterval(function () {
   wordIndex++;
   if (wordIndex == words.length) wordIndex = 0;
   setWord(words[wordIndex]);
 }, 2600);
+
+// шрифт загружается не сразу, после загрузки пересчитываем ширину
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitFlip);
+window.addEventListener('resize', fitFlip);
 
 // точки с фото на карточках проектов
 const cards = document.querySelectorAll('.pcard');
@@ -273,7 +287,7 @@ function bindForm(form) {
 
     mark(name, name.value.trim().length < 2);
     mark(phone, phone.value.replace(/\D/g, '').length != 11);
-    mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()));
+    if (email) mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()));
 
     const consOk = consent.classList.contains('checked');
     consent.classList.toggle('error', !consOk);
